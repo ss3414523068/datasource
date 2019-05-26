@@ -13,13 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class IndexController {
 
     @Autowired
     private UserMapper userMapper;
 
-    @RequestMapping("user")
+    @RequestMapping("/user")
     public ModelAndView user() {
         ModelAndView view = new ModelAndView("/user");
 
@@ -30,7 +30,7 @@ public class IndexController {
     }
 
     @ResponseBody
-    @RequestMapping("userPage")
+    @RequestMapping("/userPage")
     public String userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
 
         /* PageHelper插件 */

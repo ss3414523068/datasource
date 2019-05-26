@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="application/javascript" src="/static/frames/jquery-2.2.3/jquery.min.js"></script>
-
-    <script>
-        console.log("SpringBoot");
-    </script>
+    <script src="/static/frames/jquery-2.2.3/jquery.min.js"></script>
 </head>
 <body>
 

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class DemoController {
 
     @Autowired
@@ -25,9 +25,9 @@ public class DemoController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("user")
+    @RequestMapping("/user")
     public ModelAndView user() {
-        ModelAndView view = new ModelAndView("user");
+        ModelAndView view = new ModelAndView("/user");
 
         User user = new User();
         user = userMapper.selectById(1);
@@ -38,7 +38,7 @@ public class DemoController {
     }
 
     @ResponseBody
-    @RequestMapping("userPage")
+    @RequestMapping("/userPage")
     public String userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
         User user = new User();
         user.setName("name123");

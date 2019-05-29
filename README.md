@@ -55,6 +55,11 @@ MyMapper需要单独配置<br>
 推荐写法：DataSourceConfig（model/mapper/XML/分页）<br>
 传统写法：Application（mapper/分页）+application.properties（XML）<br>
 
+# springboot_jpa
+①JDK8<br>
+②SpringBoot2.1.3+spring-boot-starter-data-jpa<br>
+③MBP/通用Mapper均使用JPA包装实体类（单表JPA/多表MyBatis）<br>
+
 ************************************************************************************************************************
 
 # 参考

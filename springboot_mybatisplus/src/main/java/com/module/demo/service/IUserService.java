@@ -1,8 +1,8 @@
-package com.demo.service;
+package com.module.demo.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.demo.model.User;
+import com.module.demo.model.User;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
-package com.demo.controller;
+package com.module.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.demo.mapper.UserMapper;
-import com.demo.model.User;
-import com.demo.service.IUserService;
+import com.module.demo.mapper.UserMapper;
+import com.module.demo.model.User;
+import com.module.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +41,12 @@ public class DemoController {
     @RequestMapping("/userPage")
     public String userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
         User user = new User();
-        user.setName("name123");
+        user.setName("name1");
         Page<User> userPage = new Page<User>();
         userPage.setCurrent(currentPage);
         userPage.setSize(1);
 
-        IPage<User> userList = userMapper.selectPage(userPage, new QueryWrapper<User>().lambda().eq(User::getName, "name123"));
+        IPage<User> userList = userMapper.selectPage(userPage, new QueryWrapper<User>().lambda().eq(User::getName, "name1"));
         /* 自定义分页 */
         List<User> userList2 = userService.selectPageByUser(userPage, user);
         return String.valueOf(userList.getSize());

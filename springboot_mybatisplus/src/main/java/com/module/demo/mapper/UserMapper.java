@@ -1,8 +1,8 @@
-package com.demo.mapper;
+package com.module.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.demo.model.User;
+import com.module.demo.model.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

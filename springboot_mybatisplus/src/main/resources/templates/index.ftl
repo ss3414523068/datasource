@@ -19,6 +19,15 @@
     <tr>
         <td><a href="/userPage">UserPage</a></td>
     </tr>
+    <tr>
+        <td>动态表结构</td>
+    </tr>
+    <tr>
+        <td><a href="/dyna/insert">insert</a></td>
+    </tr>
+    <tr>
+        <td><a href="/dyna/selectOne">selectOne</a></td>
+    </tr>
 </table>
 
 </body>

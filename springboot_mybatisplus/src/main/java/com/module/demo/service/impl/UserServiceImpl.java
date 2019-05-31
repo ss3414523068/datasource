@@ -1,10 +1,10 @@
-package com.demo.service.impl;
+package com.module.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.demo.mapper.UserMapper;
-import com.demo.model.User;
-import com.demo.service.IUserService;
+import com.module.demo.mapper.UserMapper;
+import com.module.demo.model.User;
+import com.module.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

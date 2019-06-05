@@ -52,8 +52,18 @@ MBP（MyBatis+JPA）/Spring JDBC共存<br>
 
 # springboot_jpa
 ①JDK8<br>
-②SpringBoot2.1.3+spring-boot-starter-data-jpa<br>
-③MBP/通用Mapper均使用JPA包装实体类（单表JPA/多表MyBatis）<br>
+②MBP/通用Mapper均使用JPA包装实体类（单表JPA/多表MyBatis）<br>
+
+************************************************************************************************************************
+
+# springboot_postgresql
+①JDK8<br>
+②关系型数据库PostgreSQL<br>
+
+# springboot_h2
+①JDK8<br>
+②JVM嵌入式数据库H2<br>
+（初始化时未执行schema-h2.sql/data-h2.sql）<br>
 
 ************************************************************************************************************************
 

@@ -46,19 +46,12 @@ MyMapper需要单独配置<br>
 ③SpringBoot2整合mybatis-plus-boot-starter3.1.0<br>
 推荐写法：DataSourceConfig（model/mapper/XML/分页）<br>
 传统写法：Application（mapper/分页）+application.properties（XML）<br>
-④dyna包（动态表结构）<br>
-参考RBAC，多表关联组成一个实体类，自定义字段可动态修改<br>
-MBP（MyBatis+JPA）/Spring JDBC共存<br>
 
 # springboot_jpa
 ①JDK8<br>
 ②MBP/通用Mapper均使用JPA包装实体类（单表JPA/多表MyBatis）<br>
 
 ************************************************************************************************************************
-
-# springboot_postgresql
-①JDK8<br>
-②关系型数据库PostgreSQL<br>
 
 # springboot_h2
 ①JDK8<br>
@@ -69,5 +62,4 @@ MBP（MyBatis+JPA）/Spring JDBC共存<br>
 
 # 参考
 ①https://github.com/abel533/Mybatis-Spring（原生MyBatis位于分支中+通用Mapper）<br>
-②https://gitee.com/zhougaojun/KangarooAdmin（MyBatis-Plus）<br>
-③https://gitee.com/baomidou/mybatis-plus-samples（MyBatis-Plus SpringBoot版）<br>
+②https://gitee.com/baomidou/mybatis-plus-samples（MyBatis-Plus SpringBoot版）<br>

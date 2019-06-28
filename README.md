@@ -58,9 +58,3 @@ Druid监控（druid-spring-boot-starter）<br>
 ①JDK8<br>
 ②JVM嵌入式数据库H2<br>
 （初始化时未执行schema-h2.sql/data-h2.sql）<br>
-
-************************************************************************************************************************
-
-# 参考
-①https://github.com/abel533/Mybatis-Spring（原生MyBatis位于分支中+通用Mapper）<br>
-②https://gitee.com/baomidou/mybatis-plus-samples（MyBatis-Plus SpringBoot版）<br>

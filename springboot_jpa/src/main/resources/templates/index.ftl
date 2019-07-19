@@ -28,6 +28,12 @@
         <td><a href="/selectList">selectList</a></td>
     </tr>
     <tr>
+        <td><a href="/selectExample">selectExample</a></td>
+    </tr>
+    <tr>
+        <td><a href="/custom">custom</a></td>
+    </tr>
+    <tr>
         <td><a href="/druid/index.html">Druid监控</a></td>
     </tr>
 </table>

@@ -2,19 +2,17 @@ package com.demo.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 public class User {
 
     /*
-    * ①主键必需为Long？
-    * ②MySQL主键自增
-    * */
+     * ①主键必需为Long？
+     * ②MySQL主键自增
+     * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,5 +20,9 @@ public class User {
     private String name;
 
     private String password;
+
+    /* 不在表中的属性 */
+    @Transient
+    private List<String> nameList;
 
 }

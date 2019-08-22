@@ -1,7 +1,7 @@
 package com.demo.controller;
 
+import com.demo.dao.UserDao;
 import com.demo.model.User;
-import com.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class DemoController {
 
     @Autowired
-    UserRepository userRepository;
+    UserDao userDao;
 
     @ResponseBody
     @RequestMapping("/save")
@@ -24,7 +24,7 @@ public class DemoController {
         User user = new User();
         user.setName("name1");
         user.setPassword("pwd1");
-        User result = userRepository.save(user);
+        User result = userDao.save(user);
         return result.toString();
     }
 
@@ -35,21 +35,21 @@ public class DemoController {
         user.setId(1L);
         user.setName("name2");
         user.setPassword("pwd2");
-        User result = userRepository.save(user);
+        User result = userDao.save(user);
         return result.toString();
     }
 
     @ResponseBody
     @RequestMapping("/delete")
     public String delete() {
-        userRepository.deleteById(1L);
+        userDao.deleteById(1L);
         return "delete";
     }
 
     @RequestMapping("/selectOne")
     public ModelAndView selectOne() {
         ModelAndView view = new ModelAndView("/user");
-        Optional<User> result = userRepository.findById(1L);
+        Optional<User> result = userDao.findById(1L);
         User user = new User();
         if (result.isPresent()) {
             user = result.get();
@@ -61,7 +61,7 @@ public class DemoController {
     @ResponseBody
     @RequestMapping("/selectList")
     public String selectList() {
-        List<User> resultList = userRepository.findAll();
+        List<User> resultList = userDao.findAll();
         return resultList.toString();
     }
 

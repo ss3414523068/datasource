@@ -1,4 +1,4 @@
-package com.demo.repository;
+package com.demo.dao;
 
 import com.demo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserDao extends JpaRepository<User, Long> {
 
     @Modifying
     @Transactional

@@ -16,7 +16,7 @@ import java.util.Optional;
 public class DemoController {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @ResponseBody
     @RequestMapping("/save")

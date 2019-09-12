@@ -43,7 +43,7 @@
         <!--
         pagehelper插件
         ①可以在MyBatis单独配置中配置，也可以在Spring中配置（二选一）
-        ②PageInterceptor的property>value哪怕值为空也必需要写，否则报错
+        ②PageInterceptor的property>value哪怕值为空也必须要写，否则报错
         -->
         <property name="plugins">
             <array>

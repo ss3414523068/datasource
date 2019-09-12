@@ -3,7 +3,7 @@
 <!--
 ①namespace用来标识Mapper XML
 ②在Web项目中需要用全限定名com.mapper.UserMapper
-③SSM项目中可以不写namespace（由Spring扫描），Java直接整合必需写（不一定要用全限定名）
+③SSM项目中可以不写namespace（由Spring扫描），Java直接整合必须写（不一定要用全限定名）
 -->
 <mapper namespace="com.mapper.UserMapper">
 

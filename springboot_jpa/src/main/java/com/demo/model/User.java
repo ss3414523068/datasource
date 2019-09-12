@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
 
     /*
-     * ①主键必需为Long？
+     * ①主键必须为Long？
      * ②MySQL主键自增
      * */
     @Id

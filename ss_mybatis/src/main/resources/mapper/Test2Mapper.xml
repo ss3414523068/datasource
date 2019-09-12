@@ -97,7 +97,7 @@
         <include refid="Base_Column_List"/>
         FROM mybatis_test
         WHERE id in
-        /* 如果只传入数组，collection必需为array，item是遍历时的别名 */
+        /* 如果只传入数组，collection必须为array，item是遍历时的别名 */
         <foreach collection="array" index="index" item="alias" open="(" separator="," close=")">
             #{alias}
         </foreach>
@@ -108,7 +108,7 @@
         <include refid="Base_Column_List"/>
         FROM mybatis_test
         WHERE id in
-        /* 与传入数组同理，collection必需为list */
+        /* 与传入数组同理，collection必须为list */
         <foreach collection="list" index="index" item="alias" open="(" separator="," close=")">
             #{alias}
         </foreach>

@@ -17,7 +17,7 @@
 ②Spring/SpringMVC整合原生MyBatis<br>
 在Spring中配置SqlSessionFactoryBean/MapperScannerConfigurer（新版）<br>
 ③com包（原生MyBatis）<br>
-Mybatis Generator Maven插件<br>
+Mybatis Generator Maven插件（打包时会调用此插件）<br>
 PageHelper插件（可独立于通用Mapper使用）<br>
 Druid监控（需要配置web.xml）<br>
 ④mybatis包<br>

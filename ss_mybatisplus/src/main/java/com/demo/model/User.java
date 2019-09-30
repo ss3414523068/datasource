@@ -10,8 +10,8 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = false)
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;

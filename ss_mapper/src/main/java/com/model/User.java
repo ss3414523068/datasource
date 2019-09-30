@@ -1,9 +1,14 @@
 package com.model;
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Data
 @Table(name = "user")
 public class User {
+
     @Id
     private Integer id;
 
@@ -11,45 +16,4 @@ public class User {
 
     private String password;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    /**
-     * @return password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
 }

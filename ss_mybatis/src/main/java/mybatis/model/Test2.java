@@ -1,103 +1,39 @@
 package mybatis.model;
 
+import lombok.Data;
+
 import java.util.List;
 import java.util.Map;
 
+@Data
 public class Test2 {
 
     private Integer id;
+
     private Integer parentId;
+
     private String createTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime == null ? null : createTime.trim();
-    }
 
     /************************************************************分割线************************************************************/
 
     /* 基本类型/对象集合（不需要指定泛型） */
     private int[] selectArray;
+
     private List selectList;
+
     private Map selectMap;
-
-    public int[] getSelectArray() {
-        return selectArray;
-    }
-
-    public void setSelectArray(int[] selectArray) {
-        this.selectArray = selectArray;
-    }
-
-    public List getSelectList() {
-        return selectList;
-    }
-
-    public void setSelectList(List selectList) {
-        this.selectList = selectList;
-    }
-
-    public Map getSelectMap() {
-        return selectMap;
-    }
-
-    public void setSelectMap(Map selectMap) {
-        this.selectMap = selectMap;
-    }
 
     /************************************************************分割线************************************************************/
 
     /* 用于varchar型时间查询，数据库中没有 */
     private String beginTime;
+
     private String endTime;
-
-    public String getBeginTime() {
-        return beginTime;
-    }
-
-    public void setBeginTime(String beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
 
     /************************************************************分割线************************************************************/
 
     /* 用于count(*)返回值映射 */
     private Integer count;
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
-    }
 
     /************************************************************分割线************************************************************/
 

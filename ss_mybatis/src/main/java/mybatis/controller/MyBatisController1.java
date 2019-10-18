@@ -17,7 +17,7 @@ import java.util.Map;
 public class MyBatisController1 {
 
     @Autowired
-    private Test1Mapper test1Mapper; // 系统学习
+    private Test1Mapper test1Mapper; /* 系统学习 */
 
     @ResponseBody
     @RequestMapping("/index")

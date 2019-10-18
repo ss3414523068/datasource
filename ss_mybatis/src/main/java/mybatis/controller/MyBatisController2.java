@@ -16,7 +16,7 @@ import java.util.Map;
 public class MyBatisController2 {
 
     @Autowired
-    private Test2Mapper test2Mapper; // 自行总结
+    private Test2Mapper test2Mapper; /* 自行总结 */
 
     /* todo 包装器类（JDK1.5引入自动装箱/拆箱） */
     @ResponseBody
@@ -24,7 +24,7 @@ public class MyBatisController2 {
     public Map boxing() {
 //        int id = 1;
 //        Test2 test = test2Mapper.selectByInteger(id);
-//        Integer id2 = 1; // 自动装箱？
+//        Integer id2 = 1; /* 自动装箱？ */
 //        Test2 test2 = test2Mapper.selectByInt(id2);
 
         Map result = new HashMap();

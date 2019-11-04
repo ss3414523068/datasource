@@ -21,11 +21,12 @@ public class IndexController {
 
     @RequestMapping("/user")
     public ModelAndView user() {
-        ModelAndView view = new ModelAndView("/user");
+        ModelAndView view = new ModelAndView();
 
         User user = userMapper.selectByPrimaryKey(1);
 
         view.addObject("user", user);
+        view.setViewName("/user");
         return view;
     }
 

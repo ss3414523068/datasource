@@ -27,13 +27,14 @@ public class DemoController {
 
     @RequestMapping("/user")
     public ModelAndView user() {
-        ModelAndView view = new ModelAndView("/user");
+        ModelAndView view = new ModelAndView();
 
         User user = new User();
         user = userMapper.selectById(1);
         user = user.selectById(1);
 
         view.addObject("user", user);
+        view.setViewName("/user");
         return view;
     }
 

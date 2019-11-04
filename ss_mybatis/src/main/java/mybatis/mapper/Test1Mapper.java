@@ -118,7 +118,10 @@ public interface Test1Mapper {
     /************************************************************分割线************************************************************/
     /* todo 映射 */
 
-    /* 一对一映射 */
     User selectUserAndRoleById(Integer id);
+
+    User selectUserAndRoleById2(Integer id);
+
+    User selectUserAndRoleById3(Integer id);
 
 }

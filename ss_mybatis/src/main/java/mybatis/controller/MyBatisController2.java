@@ -27,8 +27,8 @@ public class MyBatisController2 {
 //        Integer id2 = 1; /* 自动装箱？ */
 //        Test2 test2 = test2Mapper.selectByInt(id2);
 
-        Map result = new HashMap();
-        return result;
+        Map map = new HashMap();
+        return map;
     }
 
     /************************************************************分割线************************************************************/
@@ -133,8 +133,9 @@ public class MyBatisController2 {
     }
 
     /************************************************************分割线************************************************************/
-
     /* todo varchar型时间 */
+
+    /**/
     @ResponseBody
     @RequestMapping("/time")
     public Map time() {
@@ -148,16 +149,17 @@ public class MyBatisController2 {
         select.put("endTime", "2018-12-28");
         List<Test2> testList = test2Mapper.selectByCreateTime4(select);
 
-        Map result = new HashMap();
+        Map map = new HashMap();
         for (int i = 0; i < testList.size(); i++) {
-            result.put(i + "", testList.get(i).toString());
+            map.put(i + "", testList.get(i).toString());
         }
-        return result;
+        return map;
     }
 
     /************************************************************分割线************************************************************/
-
     /* todo MyBatis转义符 */
+
+    /**/
     @ResponseBody
     @RequestMapping("/escape")
     public Map escape() {
@@ -165,13 +167,14 @@ public class MyBatisController2 {
         select.setCreateTime("2018-12-26");
         List<Test2> testList = test2Mapper.selectByEscape(select);
 
-        Map result = new HashMap();
-        return result;
+        Map map = new HashMap();
+        return map;
     }
 
     /************************************************************分割线************************************************************/
-
     /* todo select count返回值 */
+
+    /**/
     @ResponseBody
     @RequestMapping("/count")
     public Map count() {
@@ -179,8 +182,8 @@ public class MyBatisController2 {
 
         List<Test2> testList = test2Mapper.selectCount2();
 
-        Map result = new HashMap();
-        return result;
+        Map map = new HashMap();
+        return map;
     }
 
 }

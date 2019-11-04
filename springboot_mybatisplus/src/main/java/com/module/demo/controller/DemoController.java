@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("")
@@ -27,28 +29,31 @@ public class DemoController {
 
     @GetMapping("/user")
     public ModelAndView user() {
-        ModelAndView view = new ModelAndView("/user");
+        ModelAndView view = new ModelAndView();
 
         User user = new User();
         user = userMapper.selectById(1);
         user = user.selectById(1);
 
         view.addObject("user", user);
+        view.setViewName("/user");
         return view;
     }
 
     @GetMapping("/userPage")
-    public String userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
+    public Map userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
         User user = new User();
         user.setName("name1");
-        Page<User> userPage = new Page<User>();
+        Page<User> userPage = new Page<>();
         userPage.setCurrent(currentPage);
         userPage.setSize(1);
-
         IPage<User> userList = userMapper.selectPage(userPage, new QueryWrapper<User>().lambda().eq(User::getName, "name1"));
         /* 自定义分页 */
         List<User> userList2 = userService.selectPageByUser(userPage, user);
-        return String.valueOf(userList.getSize());
+
+        Map map = new HashMap();
+        map.put("result", userList.getSize());
+        return map;
     }
 
 }

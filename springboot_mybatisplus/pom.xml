@@ -59,7 +59,7 @@
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
+            <artifactId>mybatis-plus-generator</artifactId><!-- MBP生成器需要spring/freemarker/lombok/slf4j-api -->
             <version>3.1.0</version>
         </dependency>
 

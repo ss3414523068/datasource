@@ -36,7 +36,10 @@
         <td><a href="/mybatis/sql">动态SQL</a></td>
     </tr>
     <tr>
-        <td><a href="/mybatis/advance">高级查询</a></td>
+        <td><a href="/mybatis/advance">一对一映射</a></td>
+    </tr>
+    <tr>
+        <td><a href="/mybatis/advance2">一对多映射</a></td>
     </tr>
 </table>
 

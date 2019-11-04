@@ -62,13 +62,14 @@ public class MyBatisController1 {
 //
 //        test1Mapper.deleteById2(1);
 
-        Map result = new HashMap();
-        return result;
+        Map map = new HashMap();
+        return map;
     }
 
     /************************************************************分割线************************************************************/
-
     /* todo 强大的动态SQL */
+
+    /**/
     @ResponseBody
     @RequestMapping("/sql")
     public Map sql() {
@@ -84,20 +85,35 @@ public class MyBatisController1 {
 
         List<Test1> testList = test1Mapper.selectByBind(select);
 
-        Map result = new HashMap();
-        return result;
+        Map map = new HashMap();
+        return map;
     }
 
     /************************************************************分割线************************************************************/
-
     /* todo MyBatis 高级查询 */
+
+    /* fixme 一对一数据不全，一对多失败 */
+    /* 一对一映射 */
     @ResponseBody
     @RequestMapping("/advance")
     public Map advance() {
         User user = test1Mapper.selectUserAndRoleById(1);
+        user = test1Mapper.selectUserAndRoleById2(1);
 
-        Map result = new HashMap();
-        return result;
+        Map map = new HashMap();
+        map.put("user", user);
+        return map;
+    }
+
+    /* 一对多映射 */
+    @ResponseBody
+    @RequestMapping("/advance2")
+    public Map advance2() {
+        User user = test1Mapper.selectUserAndRoleById3(1);
+
+        Map map = new HashMap();
+        map.put("user", user);
+        return map;
     }
 
 }

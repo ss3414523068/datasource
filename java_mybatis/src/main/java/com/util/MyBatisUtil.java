@@ -26,7 +26,7 @@ public class MyBatisUtil {
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             SqlSession sqlSession = sqlSessionFactory.openSession();
             List<User> userList = sqlSession.selectList("selectAll");
-            System.out.println();
+            System.out.println(userList);
 
             reader.close();
             sqlSession.close();

@@ -22,8 +22,8 @@ public class DemoController {
     @Autowired
     private UserDao userDao;
 
-    @GetMapping("/save")
-    public Map save() {
+    @GetMapping("/create")
+    public Map create() {
         User user = new User();
         user.setName("姓名1");
         user.setPassword("密码1");

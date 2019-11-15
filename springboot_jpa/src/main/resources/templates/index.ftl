@@ -13,7 +13,7 @@
 
 <table border="1">
     <tr>
-        <td><a href="/save">save</a></td>
+        <td><a href="/create">save</a></td>
     </tr>
     <tr>
         <td><a href="/update">update</a></td>

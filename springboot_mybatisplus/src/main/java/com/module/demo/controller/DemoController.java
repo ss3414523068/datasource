@@ -42,14 +42,17 @@ public class DemoController {
 
     @GetMapping("/userPage")
     public Map userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
-        User user = new User();
-        user.setName("name1");
-        Page<User> userPage = new Page<>();
+        Page<User> userPage = new Page<User>();
         userPage.setCurrent(currentPage);
         userPage.setSize(1);
-        IPage<User> userList = userMapper.selectPage(userPage, new QueryWrapper<User>().lambda().eq(User::getName, "name1"));
-        /* 自定义分页 */
-        List<User> userList2 = userService.selectPageByUser(userPage, user);
+        IPage<User> userList = userMapper.selectPage(userPage, new QueryWrapper<User>().lambda().eq(User::getName, "name123"));
+
+        User user = new User();
+        user.setName("name123");
+        List<User> userList2 = userService.selectPageByUser(userPage, user); /* 自定义分页 */
+
+//        userList2.forEach(e -> e.setId(null));
+//        userService.saveBatch(userList2); /* 批量插入 */
 
         Map map = new HashMap();
         map.put("result", userList.getSize());

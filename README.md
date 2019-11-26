@@ -33,7 +33,6 @@ MyMapper需要单独配置<br>
 ③Spring/SpringMVC整合MyBatis-Plus3<br>
 在Spring中配置SqlSessionFactoryBean（MBP版）/MapperScannerConfigurer<br>
 分页插件<br>
-④实体类不能重复<br>
 
 # springboot_mybatisplus
 ①JDK8<br>

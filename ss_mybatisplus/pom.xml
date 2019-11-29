@@ -95,8 +95,4 @@
 
     </dependencies>
 
-    <build>
-        <finalName>ss_mybatisplus</finalName>
-    </build>
-
 </project>

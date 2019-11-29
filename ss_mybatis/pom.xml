@@ -121,7 +121,6 @@
     </dependencies>
 
     <build>
-        <finalName>ss_mybatis</finalName>
         <plugins>
             <!-- mybatis generator （Maven的约定为resources而非resource）-->
             <plugin>

@@ -1,7 +1,7 @@
-package com.demo.controller;
+package com.controller;
 
-import com.demo.dao.UserDao;
-import com.demo.model.User;
+import com.dao.UserDao;
+import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("")
-public class DemoController {
+public class IndexController {
+
+    @GetMapping("/")
+    public ModelAndView index() {
+        return new ModelAndView("/index");
+    }
+
+    /************************************************************分割线************************************************************/
 
     @Autowired
     private UserDao userDao;

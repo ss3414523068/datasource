@@ -1,6 +1,6 @@
-package com.demo.dao;
+package com.dao;
 
-import com.demo.model.User;
+import com.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserDao extends JpaRepository<User, Long> {

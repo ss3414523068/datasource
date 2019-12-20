@@ -11,6 +11,9 @@
         <td><a href="/user">User</a></td>
     </tr>
     <tr>
+        <td><a href="/dynamic">多数据源</a></td>
+    </tr>
+    <tr>
         <td><a href="/userPage">UserPage</a></td>
     </tr>
 </table>

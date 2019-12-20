@@ -41,6 +41,7 @@ MyMapper需要单独配置<br>
 ③SpringBoot2整合mybatis-plus-boot-starter3.1.0<br>
 推荐写法：DataSourceConfig（model/mapper/XML/分页）<br>
 传统写法：Application（mapper/分页）+application.properties（XML）<br>
+④多数据源<br>
 
 # springboot_jpa
 ①JDK8<br>

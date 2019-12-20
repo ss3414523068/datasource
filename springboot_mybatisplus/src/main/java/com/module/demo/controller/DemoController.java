@@ -1,5 +1,6 @@
 package com.module.demo.controller;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -30,11 +31,21 @@ public class DemoController {
     @GetMapping("/user")
     public ModelAndView user() {
         ModelAndView view = new ModelAndView();
-
         User user = new User();
         user = userMapper.selectById(1);
-        user = user.selectById(1);
+        user = user.selectById(1); /* ActiveRecord */
+        view.addObject("user", user);
+        view.setViewName("/user");
+        return view;
+    }
 
+    /* 多数据源 */
+    @DS("servlant")
+    @GetMapping("/dynamic")
+    public ModelAndView dynamic() {
+        ModelAndView view = new ModelAndView();
+        User user = new User();
+        user = userMapper.selectById(1);
         view.addObject("user", user);
         view.setViewName("/user");
         return view;

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.mapper.Test1Mapper">
+
+    <!--
+    修改数据库字段后，需要同时修改BaseResultMap/Base_Column_List/insert/updateByIdSelective
+    -->
+    <resultMap id="BaseResultMap" type="mybatis.model.Test1">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        parent_id,
+        create_time
+    </sql>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo CURD -->
+
+    <insert id="insert" parameterType="mybatis.model.Test1">
+        INSERT INTO mybatis_test (parent_id, create_time)
+        VALUES (#{parentId}, NOW())
+    </insert>
+
+    <insert id="insertSelective" parameterType="mybatis.model.Test1">
+        INSERT INTO mybatis_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            create_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            NOW(),
+        </trim>
+    </insert>
+
+    <update id="updateByIdSelective" parameterType="mybatis.model.Test1">
+        UPDATE mybatis_test
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE
+        FROM mybatis_test
+        WHERE id = #{id}
+    </delete>
+
+    <!--
+    <include refid="Base_Column_List"/>代替*
+    -->
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id = #{id}
+    </select>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo 主键自增 -->
+
+    <insert id="insertGeneratedKey" parameterType="mybatis.model.Test1" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO mybatis_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            create_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            NOW(),
+        </trim>
+    </insert>
+
+    <insert id="insertSelectKey" parameterType="mybatis.model.Test1">
+        INSERT INTO mybatis_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            create_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            NOW(),
+        </trim>
+        <selectKey keyColumn="id" resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo 强大的动态SQL -->
+
+    <!--
+    ①如果<where>中的if/choose不为空，插入where SQL
+    ②删除<where>后的第一个and/or
+    -->
+    <select id="selectByWhere" parameterType="mybatis.model.Test1" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        <where>
+            <if test="id !=null">
+                and id = #{id}
+            </if>
+            <if test="parentId !=null">
+                and parent_id = #{parentId}
+            </if>
+            <if test="createTime !=null and createTime != '' ">
+                and create_time = #{createTime}
+            </if>
+        </where>
+    </select>
+
+    <!-- 类似<set>，用于update语句 -->
+    <update id="updateBySet" parameterType="mybatis.model.Test1">
+        UPDATE mybatis_test
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--
+    ①<trim>拼接SQL字符串
+    ②prefix/suffix：开头结尾添加的字符串（and/or后的空格不能去掉）
+    ③prefixOverrides/suffixOverrides：覆盖头尾字符串
+    -->
+    <select id="selectByTrim" parameterType="mybatis.model.Test1" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        <trim prefix="where" prefixOverrides="and |or ">
+            <if test="id !=null">
+                and id = #{id}
+            </if>
+        </trim>
+        <if test="parentId !=null">
+            and parent_id = #{parentId}
+        </if>
+        <if test="createTime !=null and createTime != '' ">
+            and create_time = #{createTime}
+        </if>
+    </select>
+
+    <!-- bind使用OGNL表达式创建变量 -->
+    <select id="selectByBind" parameterType="mybatis.model.Test1" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        <if test="createTime !=null">
+            <bind name="createTimeName" value=" '%' + createTime + '%' "/>
+            where create_time like #{createTimeName}
+        </if>
+    </select>
+
+    <!--
+    todo OGNL表达式（#{}/${}）
+    ①+ - * / %（算术）
+    ②
+    ==/!=
+    eq/neq
+    lt/lte（小于/小于等于）
+    gt/gte（大于/大于等于）
+    ③
+    and/or
+    !e/not e（取反，只能用于布尔值？）
+    ④e[index]（按索引取值，Array/List/Map）
+    ⑤e.method()/e.property（调用对象方法/属性）
+    ⑥@class@method()/@class@field（调用静态变量/方法）
+    -->
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo 映射 -->
+
+    <!--
+    一对一映射（别名）
+    ①自动映射，不需要resultMap
+    ②通过别名自动将值匹配到对应属性
+    -->
+    <select id="selectUserAndRoleById" parameterType="java.lang.Integer" resultType="mybatis.model.rbac.User">
+        select u.id,
+               u.user_name     userName,
+               u.user_password userPassword,
+               r.id            "role.id",
+               r.role_name     "role.roleName"
+        from mybatis_user u
+                 inner join mybatis_user_role ur on u.id = ur.user_id
+                 inner join mybatis_role r on ur.role_id = r.id
+        where u.id = #{id}
+        limit 0,1
+    </select>
+
+    <!--
+    一对一映射（<association>）
+    -->
+    <resultMap id="mybatisUserResultMap" type="mybatis.model.rbac.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <association property="role" columnPrefix="role_" javaType="mybatis.model.rbac.Role">
+            <id column="id" property="id" jdbcType="INTEGER"/>
+            <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <select id="selectUserAndRoleById2" parameterType="java.lang.Integer" resultMap="mybatisUserResultMap">
+        select u.id,
+               u.user_name,
+               u.user_password,
+               r.id role_id, /* 被association的表需要前缀 */
+               r.role_name role_name
+        from mybatis_user u
+                 inner join mybatis_user_role ur on u.id = ur.user_id
+                 inner join mybatis_role r on ur.role_id = r.id
+        where u.id = #{id}
+        limit 0,1
+    </select>
+
+    <!--
+    一对多映射（<collection>）
+    -->
+    <resultMap id="mybatisUserResultMap2" type="mybatis.model.rbac.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <collection property="roleList" columnPrefix="role_" javaType="mybatis.model.rbac.Role"><!-- 此处的property与Java Bean中的对应？ -->
+            <id column="id" property="id" jdbcType="INTEGER"/>
+            <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserAndRoleById3" parameterType="java.lang.Integer" resultMap="mybatisUserResultMap2">
+        select u.id,
+               u.user_name,
+               u.user_password,
+               r.id role_id,
+               r.role_name role_name
+        from mybatis_user u
+                 inner join mybatis_user_role ur on u.id = ur.user_id
+                 inner join mybatis_role r on ur.role_id = r.id
+        where u.id = #{id}
+    </select>
+
+</mapper>

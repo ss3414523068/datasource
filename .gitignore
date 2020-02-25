@@ -2,6 +2,7 @@
 /.idea/
 /out/
 /**/target/
+/mybatis/
 
 # 文件
 *.class

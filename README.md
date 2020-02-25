@@ -3,8 +3,14 @@
 
 ************************************************************************************************************************
 
+# mybatis
+①JDK8<br>
+②MyBatis 3.4.7源码<br>
+在别的项目中引用调试MyBatis源码<br>
+（JDK8+允许ognl/javassist传递依赖）<br>
+
 # java_mybatis
-①JDK6<br>
+①JDK8<br>
 ②Java整合MyBatis<br>
 在Java中直接使用MyBatis框架需要读取配置，手动构造SqlSessionFactory/SqlSession<br>
 

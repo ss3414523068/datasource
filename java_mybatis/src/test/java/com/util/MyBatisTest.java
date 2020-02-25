@@ -36,7 +36,7 @@ public class MyBatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
             List<User> userList = sqlSession.selectList("selectAll");
-            System.out.println();
+            System.out.println(userList);
         } finally {
             sqlSession.close();
         }

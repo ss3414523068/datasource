@@ -35,7 +35,17 @@ public class MyBatisTest {
     public void testSqlSession() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            List<User> userList = sqlSession.selectList("selectAll");
+            /*
+             * DefaultSqlSession
+             * SimpleExecutor：query>doQuery？
+             * RoutingStatementHandler
+             * PreparedStatementHandler
+             * PreparedStatementLogger：invoke（JDK代理）
+             * PreparedStatement：execute（mysql-connector-java包）
+             * DefaultResultSetHandler：结果集
+             * MappedStatement
+             * */
+            List<User> userList = sqlSession.selectList("com.dao.IUserDao.selectAll");
             System.out.println(userList);
         } finally {
             sqlSession.close();

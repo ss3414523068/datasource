@@ -9,10 +9,14 @@
 在别的项目中引用调试MyBatis源码<br>
 （JDK8+允许ognl/javassist传递依赖）<br>
 
+******************************************************************************************
+
 # java_mybatis
 ①JDK8<br>
-②Java整合MyBatis<br>
+②Java直接整合MyBatis<br>
+MyBatis配置文件需要配置数据源<br>
 在Java中直接使用MyBatis框架需要读取配置，手动构造SqlSessionFactory/SqlSession<br>
+③Spring整合MyBatis（传统写法）<br>
 
 # ss_mybatis
 ①JDK6<br>
@@ -55,7 +59,7 @@ MyMapper需要单独配置<br>
 ②MBP/通用Mapper均使用JPA包装实体类（单表JPA/多表MyBatis）<br>
 Druid监控（druid-spring-boot-starter）<br>
 
-******************************************************************************************
+************************************************************************************************************************
 
 # springboot_mysql
 ①JDK8+MBP<br>
@@ -76,8 +80,6 @@ CacheManager手动添加/获取<br>
 ①JDK8+JPA<br>
 ②数据库事务<br>
 事务（@EnableTransactionManagement+@Transactional）<br>
-
-******************************************************************************************
 
 # springboot_h2
 ①JDK8<br>

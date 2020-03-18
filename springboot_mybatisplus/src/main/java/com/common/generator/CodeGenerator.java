@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 
 public class CodeGenerator {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /* 代码生成器 */
         AutoGenerator mpg = new AutoGenerator();
 
@@ -37,11 +38,7 @@ public class CodeGenerator {
         /* 数据源配置 */
         InputStream inputStream = CodeGenerator.class.getResourceAsStream("/application.properties");
         Properties properties = new Properties();
-        try {
-            properties.load(inputStream);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        properties.load(inputStream);
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl(properties.getProperty("spring.datasource.druid.url"));
         dsc.setDriverName(properties.getProperty("spring.datasource.druid.driver-class-name"));

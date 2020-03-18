@@ -6,16 +6,16 @@ import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.ehcache.config.units.MemoryUnit;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class ApplicationTest {
 
     @Autowired
@@ -54,17 +54,13 @@ public class ApplicationTest {
     /* 直接使用Ehcache（手动构造cacheManager） */
 //    @Test
     public void test4() {
-        try {
-            org.ehcache.CacheManager cacheManager = CacheManagerBuilder
-                    .newCacheManagerBuilder()
-                    .withCache("user", CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(100).offheap(1, MemoryUnit.MB)))
-                    .build(true);
-            org.ehcache.Cache<Long, String> cache = cacheManager.getCache("user", Long.class, String.class);
-            cache.put(1L, "name1");
-            System.out.println(cache.get(1L));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        org.ehcache.CacheManager cacheManager = CacheManagerBuilder
+                .newCacheManagerBuilder()
+                .withCache("user", CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(100).offheap(1, MemoryUnit.MB)))
+                .build(true);
+        org.ehcache.Cache<Long, String> cache = cacheManager.getCache("user", Long.class, String.class);
+        cache.put(1L, "name1");
+        System.out.println(cache.get(1L));
     }
 
 }

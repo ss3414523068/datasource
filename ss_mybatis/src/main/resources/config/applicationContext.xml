@@ -42,7 +42,8 @@
     -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <!--
         pagehelper插件
         ①可以在MyBatis单独配置中配置，也可以在Spring中配置（二选一）
@@ -70,7 +71,7 @@
 
     <!-- 配置EhCache+CacheManager+注解配置 -->
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:/config/ehcache.xml"/>
+        <property name="configLocation" value="classpath:config/ehcache.xml"/>
     </bean>
 
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">

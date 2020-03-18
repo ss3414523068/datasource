@@ -36,7 +36,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
         <!-- SQL XML可以不在sqlMapConfig中配置 -->
-        <!--<property name="mapperLocations" value="classpath:/mapper/*.xml"/>-->
+        <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
     </bean>
 
     <!-- 需要实现Dao接口 -->

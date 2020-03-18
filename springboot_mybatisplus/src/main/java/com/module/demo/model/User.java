@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @TableName("user")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)

@@ -57,6 +57,9 @@ public class DemoController {
         userPage.setCurrent(currentPage);
         userPage.setSize(1);
         IPage<User> userList = userMapper.selectPage(userPage, new QueryWrapper<User>().lambda().eq(User::getName, "name123"));
+//        IPage<User> userList = userMapper.selectPage(
+//                userPage, new QueryWrapper<User>().in("", Arrays.asList(""))
+//                        .eq("name", "name123"));
 
         User user = new User();
         user.setName("name123");

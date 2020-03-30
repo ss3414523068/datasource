@@ -48,7 +48,7 @@ MyMapper需要单独配置<br>
 # springboot_mybatisplus
 ①JDK8<br>
 ②SpringBoot2.1.3+mybatis-plus-boot-starter3.1.0+MBP Generator（freemarker/lombok）+Druid<br>
-（mysql-connector-java runtime会报错）<br>
+（不一定需要SQL XML）<br>
 ③SpringBoot2整合mybatis-plus-boot-starter3.1.0<br>
 推荐写法：DataSourceConfig（model/mapper/XML/分页）<br>
 传统写法：Application（mapper/分页）+application.properties（XML）<br>

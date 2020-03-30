@@ -29,11 +29,9 @@ public class User extends Model<User> {
 
     private String password;
 
-    /*
-     * 问题
-     * ①表中不存在字段
-     * ②Lambda自动驼峰问题
-     * */
+    /* 二进制使用Object而非Blob，返回的是byte数组 */
+//    private Object password;
+
     @TableField(exist = false)
     private List nameList;
 

@@ -43,7 +43,7 @@ public class MyBatisTest {
              * MappedStatement
              *
              * F7断点
-             * CachingExecutor:60（可查看输入SQL和输出结果集）
+             * CachingExecutor:60（query方法，可查看输入SQL和输出结果集）
              * */
             List<User> userList = sqlSession.selectList("com.dao.IUserDao.selectAll");
             System.out.println(userList);

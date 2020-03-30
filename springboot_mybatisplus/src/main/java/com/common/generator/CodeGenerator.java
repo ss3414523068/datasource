@@ -40,10 +40,10 @@ public class CodeGenerator {
         Properties properties = new Properties();
         properties.load(inputStream);
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl(properties.getProperty("spring.datasource.druid.url"));
-        dsc.setDriverName(properties.getProperty("spring.datasource.druid.driver-class-name"));
-        dsc.setUsername(properties.getProperty("spring.datasource.druid.username"));
-        dsc.setPassword(properties.getProperty("spring.datasource.druid.password"));
+        dsc.setUrl(properties.getProperty("spring.datasource.dynamic.datasource.master.url"));
+        dsc.setUsername(properties.getProperty("spring.datasource.dynamic.datasource.master.username"));
+        dsc.setPassword(properties.getProperty("spring.datasource.dynamic.datasource.master.password"));
+        dsc.setDriverName(properties.getProperty("spring.datasource.dynamic.datasource.master.driver-class-name"));
         mpg.setDataSource(dsc);
 
         /* 包配置 */

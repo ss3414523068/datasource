@@ -80,6 +80,17 @@
             <artifactId>pagehelper</artifactId>
             <version>5.1.4</version>
         </dependency>
+        <!-- metrics-mybatis -->
+        <dependency>
+            <groupId>top.zrbcool</groupId>
+            <artifactId>pepper-metrics-mybatis</artifactId>
+            <version>1.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>top.zrbcool</groupId>
+            <artifactId>pepper-metrics-ds-prometheus</artifactId>
+            <version>1.0.11</version>
+        </dependency>
 
         <!-- 缓存 -->
         <dependency>

@@ -6,4 +6,9 @@
         <setting name="logImpl" value="LOG4J"/>
     </settings>
 
+    <!-- fixme -->
+    <plugins>
+        <plugin interceptor="com.pepper.metrics.integration.mybatis.MybatisProfilerPlugin"/>
+    </plugins>
+
 </configuration>

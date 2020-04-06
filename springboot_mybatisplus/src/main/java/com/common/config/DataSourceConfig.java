@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.**.mapper")
+@MapperScan({"com.**.mapper", "com.**.mapper"})
 public class DataSourceConfig {
 
     /* fixme 使用被注释方法配置会导致无法分页 */

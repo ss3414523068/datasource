@@ -61,20 +61,17 @@ Druid监控（druid-spring-boot-starter）<br>
 
 ************************************************************************************************************************
 
-# springboot_mysql
-①JDK8+MBP<br>
-②MySQL调优<br>
-数据库索引<br>
-缓存<br>
-分库分表<br>
-读写分离<br>
-
 ## springboot_cache
 ①JDK8+MyBatis<br>
 ②Ehcache缓存<br>
 @EnableCaching+@CacheConfig+@Cacheable+ehcache.xml<br>
 CacheManager手动添加/获取<br>
 直接使用Ehcache<br>
+③MySQL调优<br>
+数据库索引<br>
+缓存<br>
+分库分表<br>
+读写分离<br>
 
 ## springboot_transaction
 ①JDK8+JPA<br>

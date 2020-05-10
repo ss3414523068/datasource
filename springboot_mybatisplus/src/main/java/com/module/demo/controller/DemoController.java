@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.module.demo.mapper.UserMapper;
 import com.module.demo.model.User;
-import com.module.demo.service.IUserService;
+import com.module.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ public class DemoController {
     private UserMapper userMapper;
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @GetMapping("/user")
     public ModelAndView user() {
@@ -76,6 +76,13 @@ public class DemoController {
 
         Map<String, Object> map = new HashMap<>();
         map.put("result", userList.getSize());
+        return map;
+    }
+
+    @GetMapping("/transaction")
+    public Map<String, Object> transaction() {
+        Map<String, Object> map = new HashMap<>();
+        userService.transaction();
         return map;
     }
 

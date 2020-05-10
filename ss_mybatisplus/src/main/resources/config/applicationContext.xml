@@ -34,9 +34,8 @@
     <!-- MyBatis-Plus配置 -->
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/><!-- 非必需 -->
+        <!--<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
         <property name="typeAliasesPackage" value="**.model"/>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <property name="plugins">
             <array>
                 <!-- 分页插件 -->

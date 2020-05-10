@@ -5,10 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import lombok.*;
-import lombok.experimental.Accessors;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -16,8 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("user")
-@Accessors(chain = true)
-@EqualsAndHashCode(callSuper = false)
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
@@ -34,10 +33,5 @@ public class User extends Model<User> {
 
     @TableField(exist = false)
     private List nameList;
-
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
-    }
 
 }

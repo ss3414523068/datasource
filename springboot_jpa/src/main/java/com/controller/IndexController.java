@@ -42,7 +42,7 @@ public class IndexController {
     @GetMapping("/update")
     public Map update() {
         User user = new User();
-        user.setId(7L);
+        user.setId(1);
         user.setName("name2");
         Map map = new HashMap();
         map.put("result", userDao.saveAndFlush(user)); /* fixme 只更新非Null属性 */
@@ -51,7 +51,7 @@ public class IndexController {
 
     @GetMapping("/delete")
     public Map delete() {
-        userDao.deleteById(1L);
+        userDao.deleteById(1);
         Map map = new HashMap();
         map.put("result", "delete");
         return map;
@@ -60,7 +60,7 @@ public class IndexController {
     @GetMapping("/selectOne")
     public ModelAndView selectOne() {
         ModelAndView view = new ModelAndView();
-        Optional<User> result = userDao.findById(1L);
+        Optional<User> result = userDao.findById(1);
         User user = new User();
         if (result.isPresent()) {
             user = result.get();
@@ -106,8 +106,8 @@ public class IndexController {
         user.setName("name123");
         user.setPassword("pwd1");
         System.out.println(userDao.customInsert("name123", "pwd1"));
-        System.out.println(userDao.customUpdate(1L, "name456", "pwd2"));
-        System.out.println(userDao.customDelete(1L));
+        System.out.println(userDao.customUpdate(1, "name456", "pwd2"));
+        System.out.println(userDao.customDelete(1));
         System.out.println(userDao.customList("name123", "pwd1"));
         Map map = new HashMap();
         return map;

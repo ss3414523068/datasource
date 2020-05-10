@@ -10,10 +10,16 @@
 
 <table border="1">
     <tr>
-        <td><a href="/user">User</a></td>
+        <td>id</td>
+        <td>${user.id}</td>
     </tr>
     <tr>
-        <td><a href="/transaction">事务</a></td>
+        <td>name</td>
+        <td>${user.name}</td>
+    </tr>
+    <tr>
+        <td>pwd</td>
+        <td>${user.password}</td>
     </tr>
 </table>
 

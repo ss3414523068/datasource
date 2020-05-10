@@ -13,7 +13,7 @@
         <td><a href="/user">User</a></td>
     </tr>
     <tr>
-        <td><a href="/transaction">事务</a></td>
+        <td><a href="/druid/index.html">Druid监控</a></td>
     </tr>
 </table>
 

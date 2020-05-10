@@ -13,7 +13,7 @@
     </sql>
 
     <insert id="insert" parameterType="com.model.User">
-        INSERT INTO USER (id, name, password)
+        INSERT INTO user (id, name, password)
         VALUES (#{id}, #{name}, #{password})
     </insert>
 

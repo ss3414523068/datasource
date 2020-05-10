@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public interface UserDao extends JpaRepository<User, Long> {
+public interface UserDao extends JpaRepository<User, Integer> {
 
     @Modifying
     @Transactional
@@ -18,12 +18,12 @@ public interface UserDao extends JpaRepository<User, Long> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE user SET name=?2,password=?3 WHERE id=?1", nativeQuery = true)
-    int customUpdate(Long id, String name, String password);
+    int customUpdate(Integer id, String name, String password);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM user WHERE id=?1", nativeQuery = true)
-    int customDelete(Long id);
+    int customDelete(Integer id);
 
     @Query(value = "SELECT * FROM user WHERE name = ?1 AND password = ?2", nativeQuery = true)
     List<User> customList(String name, String pwd);

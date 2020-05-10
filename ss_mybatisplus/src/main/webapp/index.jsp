@@ -12,9 +12,6 @@
     <tr>
         <td><a href="/user">User</a></td>
     </tr>
-    <tr>
-        <td><a href="/userPage">UserPage</a></td>
-    </tr>
 </table>
 
 </body>

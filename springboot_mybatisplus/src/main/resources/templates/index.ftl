@@ -16,6 +16,9 @@
     <tr>
         <td><a href="/userPage">UserPage</a></td>
     </tr>
+    <tr>
+        <td><a href="/transaction">事务</a></td>
+    </tr>
 </table>
 
 </body>

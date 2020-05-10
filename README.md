@@ -14,9 +14,9 @@
 # java_mybatis
 ①JDK8<br>
 ②Java直接整合MyBatis<br>
-MyBatis配置文件需要配置数据源<br>
 在Java中直接使用MyBatis框架需要读取配置，手动构造SqlSessionFactory/SqlSession<br>
 ③Spring整合MyBatis（传统写法）<br>
+事务<br>
 
 # ss_mybatis
 ①JDK6<br>
@@ -45,6 +45,9 @@ MyMapper需要单独配置<br>
 在Spring中配置SqlSessionFactoryBean（MBP版）/MapperScannerConfigurer<br>
 分页插件<br>
 
+# ss_jpa
+①JDK8<br>
+
 # springboot_mybatisplus
 ①JDK8<br>
 ②SpringBoot2.1.3+mybatis-plus-boot-starter3.1.0+MBP Generator（freemarker/lombok）+Druid<br>
@@ -56,8 +59,9 @@ MyMapper需要单独配置<br>
 
 # springboot_jpa
 ①JDK8<br>
-②MBP/通用Mapper均使用JPA包装实体类（单表JPA/多表MyBatis）<br>
-Druid监控（druid-spring-boot-starter）<br>
+②MBP/通用Mapper均使用JPA包装实体类<br>
+③数据库事务<br>
+事务（@EnableTransactionManagement+@Transactional）<br>
 
 ************************************************************************************************************************
 
@@ -70,13 +74,6 @@ CacheManager手动添加/获取<br>
 ③MySQL调优<br>
 数据库索引<br>
 缓存<br>
-分库分表<br>
-读写分离<br>
-
-## springboot_transaction
-①JDK8+JPA<br>
-②数据库事务<br>
-事务（@EnableTransactionManagement+@Transactional）<br>
 
 # springboot_h2
 ①JDK8<br>

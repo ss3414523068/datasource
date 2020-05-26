@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.dao.UserDao;
+import com.model.Role;
 import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -10,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("")
@@ -102,15 +100,33 @@ public class IndexController {
     /* 自定义CURD */
     @GetMapping("/custom")
     public Map custom() {
-        User user = new User();
-        user.setName("name123");
-        user.setPassword("pwd1");
-        System.out.println(userDao.customInsert("name123", "pwd1"));
-        System.out.println(userDao.customUpdate(1, "name456", "pwd2"));
-        System.out.println(userDao.customDelete(1));
-        System.out.println(userDao.customList("name123", "pwd1"));
-        Map map = new HashMap();
-        return map;
+//        System.out.println(userDao.customInsert("name123", "pwd1"));
+//        System.out.println(userDao.customUpdate(1, "name456", "pwd2"));
+//        System.out.println(userDao.customDelete(1));
+//        Pageable pageable = PageRequest.of(0, 1);
+//        List<User> userList = userDao.customList("name123", pageable);
+
+//        List<User> userList = userDao.findAll(); /* 关联查询 */
+
+        /* 关联插入（同时插入user/user_role） */
+//        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(
+//                Role.builder().roleId(1).roleName("role1").build(),
+//                Role.builder().roleId(2).roleName("role2").build()));
+//        User user = User.builder()
+//                .name("name1")
+//                .roleList(roleList)
+//                .build();
+//        userDao.save(user);
+
+        /* 关联更新 */
+        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().roleId(1).roleName("role1").build()));
+        User user = User.builder()
+                .id(1)
+                .name("name1")
+                .roleList(roleList)
+                .build();
+        userDao.saveAndFlush(user);
+        return new HashMap();
     }
 
 }

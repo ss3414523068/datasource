@@ -209,9 +209,9 @@
                u.user_password userPassword,
                r.id            "role.id",
                r.role_name     "role.roleName"
-        from mybatis_user u
-                 inner join mybatis_user_role ur on u.id = ur.user_id
-                 inner join mybatis_role r on ur.role_id = r.id
+        from user u
+                 inner join user_role ur on u.id = ur.user_id
+                 inner join role r on ur.role_id = r.id
         where u.id = #{id}
         limit 0,1
     </select>
@@ -235,9 +235,9 @@
                u.user_password,
                r.id role_id, /* 被association的表需要前缀 */
                r.role_name role_name
-        from mybatis_user u
-                 inner join mybatis_user_role ur on u.id = ur.user_id
-                 inner join mybatis_role r on ur.role_id = r.id
+        from user u
+                 inner join user_role ur on u.id = ur.user_id
+                 inner join role r on ur.role_id = r.id
         where u.id = #{id}
         limit 0,1
     </select>
@@ -261,9 +261,9 @@
                u.user_password,
                r.id role_id,
                r.role_name role_name
-        from mybatis_user u
-                 inner join mybatis_user_role ur on u.id = ur.user_id
-                 inner join mybatis_role r on ur.role_id = r.id
+        from user u
+                 inner join user_role ur on u.id = ur.user_id
+                 inner join role r on ur.role_id = r.id
         where u.id = #{id}
     </select>
 

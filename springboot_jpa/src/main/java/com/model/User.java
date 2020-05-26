@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -24,8 +25,42 @@ public class User {
 
     private String password;
 
+    /* 一对一（user_id直接存在role表中） */
+//    @OneToOne
+//    @JoinColumn(name = "user_id") /* 外键 */
+//    private Role role;
+
+    /* 一对多 */
+//    @OneToMany
+//    @JoinColumn(name = "user_id")
+//    private List<Role> roleList;
+
+    /*
+     * 多对多（中间表）
+     *
+     * 级联策略
+     * PERSIST：新建（同时插入user/role/user_role）
+     * REMOVE：删除
+     * REFRESH：刷新
+     * MERGE：更新（同时插入user/user_role）
+     * ALL：全部
+     *
+     * fetch：不要使用懒加载
+     *
+     * 使用Set而非List存储
+     * */
+    @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roleList;
+
     /* 不在表中的属性 */
     @Transient
     private List<String> nameList;
+
+    /* 多对多需要重写toString()方法 */
+    @Override
+    public String toString() {
+        return "";
+    }
 
 }

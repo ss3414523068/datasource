@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.model.User;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,7 +26,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Query(value = "DELETE FROM user WHERE id=?1", nativeQuery = true)
     int customDelete(Integer id);
 
-    @Query(value = "SELECT * FROM user WHERE name = ?1 AND password = ?2", nativeQuery = true)
-    List<User> customList(String name, String pwd);
+    @Query(value = "SELECT * FROM user WHERE name = ?1", nativeQuery = true)
+    List<User> customList(String name, Pageable pageable);
 
 }

@@ -30,6 +30,12 @@
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
+        <property name="proxyFilters" ref="slowFilter"/>
+    </bean>
+
+    <bean id="slowFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="100"/>
+        <property name="logSlowSql" value="true"/>
     </bean>
 
     <!--************************************************************半分割线******************************-->

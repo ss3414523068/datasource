@@ -25,7 +25,7 @@
 ③com包（原生MyBatis）<br>
 Mybatis Generator Maven插件（打包时会调用此插件）<br>
 PageHelper插件（可独立于通用Mapper使用）<br>
-Druid监控（需要配置web.xml）<br>
+Druid监控（需要配置web.xml+数据源配置慢查询）<br>
 Ehcache（Spring配置+ehcache.xml）<br>
 ④mybatis包<br>
 MyBatisController1+Test1Mapper（系统学习）<br>
@@ -50,7 +50,7 @@ MyMapper需要单独配置<br>
 
 # springboot_mybatisplus
 ①JDK8<br>
-②SpringBoot2.1.3+mybatis-plus-boot-starter3.1.0+MBP Generator（freemarker/lombok）+Druid<br>
+②SpringBoot2.1.3+mybatis-plus-boot-starter3.1.0+MBP Generator（freemarker/lombok）<br>
 （不一定需要SQL XML）<br>
 ③SpringBoot2整合mybatis-plus-boot-starter3.1.0<br>
 推荐写法：DataSourceConfig（model/mapper/XML/分页）<br>

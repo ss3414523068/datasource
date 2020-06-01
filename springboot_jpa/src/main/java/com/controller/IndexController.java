@@ -40,10 +40,10 @@ public class IndexController {
     @GetMapping("/update")
     public Map update() {
         User user = new User();
-        user.setId(1);
+        user.setId(null);
         user.setName("name2");
         Map map = new HashMap();
-        map.put("result", userDao.saveAndFlush(user)); /* fixme 只更新非Null属性 */
+        map.put("result", userDao.saveAndFlush(user)); /* 搭配hutool copyProperties只更新非null */
         return map;
     }
 
@@ -110,8 +110,8 @@ public class IndexController {
 
         /* 关联插入（同时插入user/user_role） */
 //        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(
-//                Role.builder().roleId(1).roleName("role1").build(),
-//                Role.builder().roleId(2).roleName("role2").build()));
+//                Role.builder().roleId("4d201114-7f13-40b9-abea-e7d7b00b183b").roleName("role1").build(),
+//                Role.builder().roleId("c83b950a-9ff5-11ea-bf9d-94c6910c8b5c").roleName("role2").build()));
 //        User user = User.builder()
 //                .name("name1")
 //                .roleList(roleList)
@@ -119,14 +119,14 @@ public class IndexController {
 //        userDao.save(user);
 
         /* 关联更新 */
-        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().roleId(1).roleName("role1").build()));
+        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().roleId("4d201114-7f13-40b9-abea-e7d7b00b183b").roleName("role1").build()));
         User user = User.builder()
-                .id(1)
+                .id("877dd8c2-e7c3-4690-8778-f882a22d8093")
                 .name("name1")
                 .roleList(roleList)
                 .build();
         userDao.saveAndFlush(user);
-        return new HashMap();
+        return new LinkedHashMap();
     }
 
 }

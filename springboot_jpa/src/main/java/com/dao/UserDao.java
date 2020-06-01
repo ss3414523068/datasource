@@ -29,4 +29,6 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Query(value = "SELECT * FROM user WHERE name = ?1", nativeQuery = true)
     List<User> customList(String name, Pageable pageable);
 
+    /* fixme 聚类查询 */
+
 }

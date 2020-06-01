@@ -30,6 +30,16 @@
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
+        <!-- Druid输出到监控面板/Log4J -->
+        <!--<property name="filters" value="stat,log4j"/>-->
+        <!-- 慢查询 -->
+        <property name="proxyFilters" ref="slowFilter"/>
+    </bean>
+
+    <!-- fixme Druid监控数据无法持久化/输出到Log4J的数据格式化 -->
+    <bean id="slowFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="100"/><!-- 超过100毫秒即为慢查询 -->
+        <property name="logSlowSql" value="true"/>
     </bean>
 
     <!--************************************************************半分割线******************************-->

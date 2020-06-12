@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 public interface UserDao extends JpaRepository<User, Integer> {
 
@@ -26,9 +27,8 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Query(value = "DELETE FROM user WHERE id=?1", nativeQuery = true)
     int customDelete(Integer id);
 
-    @Query(value = "SELECT * FROM user WHERE name = ?1", nativeQuery = true)
-    List<User> customList(String name, Pageable pageable);
-
-    /* fixme 聚类查询 */
+    /* JPA查询部分字段 */
+    @Query(value = "SELECT id,name FROM user WHERE name = ?1", nativeQuery = true)
+    List<Map<String, Object>> customList(String name, Pageable pageable);
 
 }

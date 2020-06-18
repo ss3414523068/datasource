@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Builder
@@ -18,16 +15,16 @@ import javax.persistence.Id;
 @Entity
 public class Role {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "role_id")
-//    private Integer roleId;
-
     @Id
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-    @GeneratedValue(generator = "uuid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private String roleId;
+    private Integer roleId;
+
+//    @Id
+//    @GenericGenerator(name = "uuid", strategy = "uuid")
+//    @GeneratedValue(generator = "uuid")
+//    @Column(name = "role_id")
+//    private String roleId;
 
     @Column(name = "role_name")
     private String roleName;
@@ -36,8 +33,8 @@ public class Role {
 //    private Integer userId;
 
     /* 多对多 */
-//    @ManyToMany(mappedBy = "roleList", fetch = FetchType.EAGER)
-//    private Set<User> userList;
+    @ManyToMany(mappedBy = "roleList", fetch = FetchType.EAGER)
+    private Set<User> userList;
 
     @Override
     public String toString() {

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,8 +51,8 @@ public class DemoController {
         return view;
     }
 
-    @GetMapping("/userPage")
-    public Map<String, Object> userPage(@RequestParam(defaultValue = "1") Integer currentPage) {
+    @GetMapping("/page")
+    public Map<String, Object> page(@RequestParam(defaultValue = "1") Integer currentPage) {
         Page<User> userPage = new Page<User>();
         userPage.setCurrent(currentPage);
         userPage.setSize(1);
@@ -74,14 +74,22 @@ public class DemoController {
         nameList.add("name456");
         List<User> userList3 = userMapper.selectList(new QueryWrapper<User>().lambda().in(User::getName, nameList));
 
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new LinkedHashMap<>();
         map.put("result", userList.getSize());
+        return map;
+    }
+
+    @GetMapping("/update")
+    public Map<String, Object> update() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        User user = User.builder().name("name2").password(null).build(); /* 默认null值不更新 */
+        userMapper.update(user, new QueryWrapper<User>().lambda().eq(User::getId, 1));
         return map;
     }
 
     @GetMapping("/transaction")
     public Map<String, Object> transaction() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new LinkedHashMap<>();
         userService.transaction();
         return map;
     }

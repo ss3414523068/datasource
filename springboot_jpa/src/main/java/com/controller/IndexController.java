@@ -1,9 +1,13 @@
 package com.controller;
 
+import com.dao.RoleDao;
 import com.dao.UserDao;
+import com.model.Role;
 import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +28,9 @@ public class IndexController {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
 
     @GetMapping("/create")
     public Map create() {
@@ -102,15 +109,15 @@ public class IndexController {
 //        System.out.println(userDao.customInsert("name123", "pwd1"));
 //        System.out.println(userDao.customUpdate(1, "name456", "pwd2"));
 //        System.out.println(userDao.customDelete(1));
-        Pageable pageable = PageRequest.of(0, 1);
-        List<LinkedHashMap<String, Object>> userList = userDao.customList("name1", pageable);
+//        Pageable pageable = PageRequest.of(0, 1);
+//        List<Map<String, Object>> userList = userDao.customList("name1", pageable);
 
 //        List<User> userList = userDao.findAll(); /* 关联查询 */
 
-        /* 关联插入（同时插入user/user_role） */
+//        /* 关联插入（同时插入user/user_role） */
 //        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(
-//                Role.builder().roleId("4d201114-7f13-40b9-abea-e7d7b00b183b").roleName("role1").build(),
-//                Role.builder().roleId("c83b950a-9ff5-11ea-bf9d-94c6910c8b5c").roleName("role2").build()));
+//                Role.builder().id(1).roleName("role1").build(),
+//                Role.builder().id(2).roleName("role2").build()));
 //        User user = User.builder()
 //                .name("name1")
 //                .roleList(roleList)
@@ -118,13 +125,18 @@ public class IndexController {
 //        userDao.save(user);
 
 //        /* 关联更新 */
-//        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().roleId("4d201114-7f13-40b9-abea-e7d7b00b183b").roleName("role1").build()));
+//        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().id(1).roleName("role1").build()));
 //        User user = User.builder()
-//                .id("877dd8c2-e7c3-4690-8778-f882a22d8093")
+//                .id(1)
 //                .name("name1")
-////                .roleList(roleList)
+//                .roleList(roleList)
 //                .build();
 //        userDao.saveAndFlush(user);
+
+        /* 双向关联，关联删除 */
+        Role role = roleDao.findById(1).get();
+        roleDao.deleteById(1);
+
         return new LinkedHashMap();
     }
 

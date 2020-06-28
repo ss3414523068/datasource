@@ -13,12 +13,22 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("role")
-public class Role extends Model<Role> {
+@TableName("product")
+public class Product extends Model<Product> {
 
-    @TableId(value = "role_id", type = IdType.AUTO)
-    private Integer roleId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-    private String roleName;
+    private String name;
+
+    private String category;
+
+    private Float price;
+
+    private String area;
+
+    private String code;
+
+    private Integer score;
 
 }

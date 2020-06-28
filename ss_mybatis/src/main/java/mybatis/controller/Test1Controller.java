@@ -2,7 +2,6 @@ package mybatis.controller;
 
 import mybatis.mapper.Test1Mapper;
 import mybatis.model.Test1;
-import mybatis.model.rbac.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/mybatis")
-public class MyBatisController1 {
+public class Test1Controller {
 
     @Autowired
     private Test1Mapper test1Mapper; /* 系统学习 */
@@ -76,30 +75,6 @@ public class MyBatisController1 {
         List<Test1> testList = test1Mapper.selectByBind(select);
 
         Map map = new HashMap();
-        return map;
-    }
-
-    /* todo MyBatis 高级查询 */
-    /* 一对一映射 */
-    @ResponseBody
-    @RequestMapping("/advance")
-    public Map advance() {
-        User user = test1Mapper.selectUserAndRoleById(1);
-        user = test1Mapper.selectUserAndRoleById2(1);
-
-        Map map = new HashMap();
-        map.put("user", user);
-        return map;
-    }
-
-    /* 一对多映射 */
-    @ResponseBody
-    @RequestMapping("/advance2")
-    public Map advance2() {
-        User user = test1Mapper.selectUserAndRoleById3(1);
-
-        Map map = new HashMap();
-        map.put("user", user);
         return map;
     }
 

@@ -36,12 +36,6 @@
     <tr>
         <td><a href="/mybatis/sql">动态SQL</a></td>
     </tr>
-    <tr>
-        <td><a href="/mybatis/advance">一对一映射</a></td>
-    </tr>
-    <tr>
-        <td><a href="/mybatis/advance2">一对多映射</a></td>
-    </tr>
 </table>
 
 <!-- todo Test2Mapper -->

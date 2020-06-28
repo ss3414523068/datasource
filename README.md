@@ -39,34 +39,35 @@ PageHelper插件<br>
 MyMapper需要单独配置<br>
 
 # ss_mybatisplus
-①JDK8<br>
-②Spring4+MyBatis-Plus3+MBP Generator（slf4j-api/freemarker/lombok）<br>
-③Spring/SpringMVC整合MyBatis-Plus3<br>
+①JDK8+Spring4+MyBatis-Plus3+MBP Generator（slf4j-api/freemarker/lombok）<br>
+②Spring/SpringMVC整合MyBatis-Plus3<br>
 在Spring中配置SqlSessionFactoryBean（MBP版）/MapperScannerConfigurer<br>
 分页插件<br>
 
 # ss_jpa
 ①JDK8<br>
 
+# springboot_mybatis
+①JDK8+SpringBoot+MyBatis+pagehelper<br>
+②MyBatis注解（CURD/关联）<br>
+
 # springboot_mybatisplus
-①JDK8<br>
-②SpringBoot2.1.3+mybatis-plus-boot-starter3.1.0+MBP Generator（freemarker/lombok）<br>
+①JDK8+SpringBoot2.1.3+mybatis-plus-boot-starter3.1.0+MBP Generator（freemarker/lombok）<br>
 （不一定需要SQL XML）<br>
-③SpringBoot2整合mybatis-plus-boot-starter3.1.0<br>
+②SpringBoot整合mybatis-plus-boot-starter3.1.0<br>
 推荐写法：DataSourceConfig（model/mapper/XML/分页）<br>
 传统写法：Application（mapper/分页）+application.properties（XML）<br>
-④多数据源<br>
+③多数据源/事务/异步<br>
 
 # springboot_jpa
 ①JDK8<br>
-②MBP/通用Mapper均使用JPA包装实体类<br>
-③归档<br>
+②JPA<br>
 事务（@EnableTransactionManagement+@Transactional）<br>
 关联（多对多：双向关联+关联插入/更新/查询）<br>
 
 ************************************************************************************************************************
 
-## springboot_cache
+# springboot_cache
 ①JDK8+MyBatis<br>
 ②Ehcache缓存<br>
 @EnableCaching+@CacheConfig+@Cacheable+ehcache.xml<br>
@@ -75,6 +76,10 @@ CacheManager手动添加/获取<br>
 ③MySQL调优<br>
 数据库索引<br>
 缓存<br>
+
+# sharding_mybatisplus
+①JDK8+MBP+sharding-jdbc<br>
+②ShardingJDBC+MBP<br>
 
 # springboot_h2
 ①JDK8<br>

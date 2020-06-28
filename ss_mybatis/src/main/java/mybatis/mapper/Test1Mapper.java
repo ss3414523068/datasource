@@ -1,7 +1,6 @@
 package mybatis.mapper;
 
 import mybatis.model.Test1;
-import mybatis.model.rbac.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -108,14 +107,5 @@ public interface Test1Mapper {
 
     /* bind（bind：绑定） */
     List<Test1> selectByBind(Test1 record);
-
-    /************************************************************分割线************************************************************/
-    /* todo 映射 */
-
-    User selectUserAndRoleById(Integer id);
-
-    User selectUserAndRoleById2(Integer id);
-
-    User selectUserAndRoleById3(Integer id);
 
 }

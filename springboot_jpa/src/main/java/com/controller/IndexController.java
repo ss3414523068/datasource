@@ -111,21 +111,14 @@ public class IndexController {
 //        System.out.println(userDao.customDelete(1));
 //        Pageable pageable = PageRequest.of(0, 1);
 //        List<Map<String, Object>> userList = userDao.customList("name1", pageable);
+        return new LinkedHashMap();
+    }
 
-//        List<User> userList = userDao.findAll(); /* 关联查询 */
-
-//        /* 关联插入（同时插入user/user_role） */
-//        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(
-//                Role.builder().id(1).roleName("role1").build(),
-//                Role.builder().id(2).roleName("role2").build()));
-//        User user = User.builder()
-//                .name("name1")
-//                .roleList(roleList)
-//                .build();
-//        userDao.save(user);
-
-//        /* 关联更新 */
-//        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().id(1).roleName("role1").build()));
+    /* 关联 */
+    @GetMapping("/related")
+    public Map related() {
+//        /* fixme 关联更新（已有的user_role会再插入一次） */
+//        Set<Role> roleList = new LinkedHashSet<>(Arrays.asList(Role.builder().roleId(1).roleName("role1").build()));
 //        User user = User.builder()
 //                .id(1)
 //                .name("name1")
@@ -133,9 +126,16 @@ public class IndexController {
 //                .build();
 //        userDao.saveAndFlush(user);
 
-        /* 双向关联，关联删除 */
-        Role role = roleDao.findById(1).get();
-        roleDao.deleteById(1);
+//        /* 关联查询（使用自定义查询代替） */
+//        List<User> userList = userDao.findAll();
+
+//        /* 删除 */
+//        userDao.deleteById(1);
+
+        List<Role> roleList = roleDao.findAll();
+
+//        /* fixme 删除（关联的user_role没有删除） */
+//        roleDao.deleteById(1);
 
         return new LinkedHashMap();
     }

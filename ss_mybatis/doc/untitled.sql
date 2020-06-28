@@ -22,6 +22,9 @@ CREATE TABLE `user_role`  (
   PRIMARY KEY (`user_role_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
+DELETE FROM `user`;
+DELETE FROM `role`;
+DELETE FROM `user_role`;
 INSERT INTO `user` VALUES (1, 'name1', 'pwd1');
 INSERT INTO `role` VALUES (1, 'role1');
 INSERT INTO `role` VALUES (2, 'role2');

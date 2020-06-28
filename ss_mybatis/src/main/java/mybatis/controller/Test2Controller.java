@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/mybatis")
-public class MyBatisController2 {
+public class Test2Controller {
 
     @Autowired
     private Test2Mapper test2Mapper; /* 自行总结 */

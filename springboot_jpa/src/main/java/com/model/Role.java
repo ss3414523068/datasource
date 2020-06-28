@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Builder
@@ -34,7 +34,7 @@ public class Role {
 
     /* 多对多 */
     @ManyToMany(mappedBy = "roleList", fetch = FetchType.EAGER)
-    private Set<User> userList;
+    private List<User> userList;
 
     @Override
     public String toString() {

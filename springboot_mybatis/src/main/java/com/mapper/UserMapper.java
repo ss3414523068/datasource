@@ -11,21 +11,21 @@ import java.util.List;
 public interface UserMapper {
 
     /* 注意换行前的空格 */
-    @Insert("INSERT INTO `user` (`name`, `password`) " +
+    @Insert("INSERT INTO user (name, password) " +
             "VALUES (#{name}, #{password})")
     int insert(User record);
 
-    @Update("UPDATE `user`" +
-            "SET `name` = #{name}, `password` = #{password} " +
-            "WHERE `id` = #{id}")
+    @Update("UPDATE user" +
+            "SET name = #{name}, password = #{password} " +
+            "WHERE id = #{id}")
     int update(User record);
 
-    @Delete("DELETE FROM `user` " +
-            "WHERE `id` = #{id}")
+    @Delete("DELETE FROM user " +
+            "WHERE id = #{id}")
     int delete(Integer id);
 
-    @Select("SELECT `id`, `name`, `password` FROM `user` " +
-            "WHERE `id` = #{id}")
+    @Select("SELECT id, name, password FROM user " +
+            "WHERE id = #{id}")
     @Results(id = "BaseResultMap", value = {
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER, id = true),
             @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
@@ -34,19 +34,23 @@ public interface UserMapper {
     User selectOne(Integer id);
 
     /* @ResultMap复用@Results */
-    @Select("SELECT `id`, `name`, `password` FROM `user`")
+    @Select("SELECT id, name, password FROM user")
     @ResultMap(value = "BaseResultMap")
     List<User> selectList();
 
-    @Select("SELECT `id`, `name`, `password` FROM `user` " +
-            "WHERE `id` = #{id}")
+    /************************************************************分割线************************************************************/
+
+    @Select("SELECT id, name, password FROM user " +
+            "WHERE id = #{id}")
     @Results(id = "RelatedResultMap", value = {
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER, id = true),
             @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
             @Result(column = "password", property = "password", jdbcType = JdbcType.VARCHAR),
-            /* 根据userId查询UserRole */
-            @Result(column = "id", property = "userRoleList", javaType = List.class, many = @Many(select = "com.mapper.UserRoleMapper.selectListByUserId")),
+            /* 根据userId查询roleList */
+            @Result(column = "id", property = "roleList", javaType = List.class, many = @Many(select = "com.mapper.RoleMapper.selectListByUserId")),
     })
     User selectRelatedOne(Integer id);
+
+    User selectRelatedOne2(Integer id);
 
 }

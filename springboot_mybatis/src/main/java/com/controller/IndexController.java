@@ -1,8 +1,8 @@
 package com.controller;
 
 import com.github.pagehelper.PageHelper;
+import com.mapper.RoleMapper;
 import com.mapper.UserMapper;
-import com.mapper.UserRoleMapper;
 import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,19 +49,22 @@ public class IndexController {
     }
 
     @Autowired
-    private UserRoleMapper userRoleMapper;
+    private RoleMapper roleMapper;
 
     /* 关联 */
     @GetMapping("/related")
     public Map<String, Object> related() {
-//        List<UserRole> userRoleList = userRoleMapper.selectListByUserId(1);
-
         /*
          * 与JPA相比
          * ①优点：更灵活
          * ②缺点：需要手写SQL
+         * ③结合：单表用JPA，关联用MyBatis
          * */
-        User user = userMapper.selectRelatedOne(1);
+//        User user = userMapper.selectRelatedOne(1);
+
+        /* XML关联 */
+//        List<Role> roleList = roleMapper.selectListByUserId2(1);
+        User user = userMapper.selectRelatedOne2(1);
 
         return new LinkedHashMap<>();
     }

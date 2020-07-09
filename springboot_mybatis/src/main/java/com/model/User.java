@@ -19,6 +19,6 @@ public class User {
 
     private String password;
 
-    private List<UserRole> userRoleList;
+    private List<Role> roleList;
 
 }

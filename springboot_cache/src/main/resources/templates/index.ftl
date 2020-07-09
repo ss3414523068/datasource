@@ -8,16 +8,13 @@
 
 <table border="1">
     <tr>
-        <td><a href="/curd">curd</a></td>
+        <td><a href="/first">first</a></td>
     </tr>
     <tr>
-        <td><a href="/userPage">userPage</a></td>
+        <td><a href="/second">second</a></td>
     </tr>
     <tr>
-        <td><a href="/related">related</a></td>
-    </tr>
-    <tr>
-        <td><a href="/cache">cache</a></td>
+        <td><a href="/ehcache">ehcache</a></td>
     </tr>
 </table>
 

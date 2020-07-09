@@ -17,8 +17,4 @@ public class UserRole {
 
     private Integer roleId;
 
-    private User user;
-
-    private Role role;
-
 }

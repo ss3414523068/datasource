@@ -1,8 +1,8 @@
 package com.mapper;
 
-import org.springframework.stereotype.Repository;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.model.User;
 
-@Repository
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
 }

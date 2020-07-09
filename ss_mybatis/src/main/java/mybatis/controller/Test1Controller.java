@@ -42,18 +42,6 @@ public class Test1Controller {
 //        test1Mapper.insertSelectKey(test);
 //        System.out.println(test.getId());
 
-        /* todo MyBatis 注解方式 */
-//        Test1 test = new Test1();
-//        test1Mapper.insert2(test);
-//
-//        test.setId(1);
-//        test.setParentId(1);
-//        test1Mapper.updateById2(test);
-//
-//        test = test1Mapper.selectById2(1);
-//
-//        test1Mapper.deleteById2(1);
-
         Map map = new HashMap();
         return map;
     }

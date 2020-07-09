@@ -1,10 +1,6 @@
 package mybatis.mapper;
 
 import mybatis.model.Test1;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,7 +23,7 @@ public interface Test1Mapper {
      *
      * ①sqlSessionTemplate+XML
      * ②接口+XML
-     * ③接口+MyBatis注解（不推荐）
+     * ③接口+MyBatis注解
      * */
 
     /************************************************************半分割线******************************/
@@ -59,26 +55,6 @@ public interface Test1Mapper {
 
     /* 都支持 */
     int insertSelectKey(Test1 record);
-
-    /************************************************************半分割线******************************/
-    /* todo MyBatis 注解方式 */
-    @Insert("INSERT INTO test (parent_id, create_time)" +
-            "VALUES (#{parentId}, NOW())")
-    int insert2(Test1 record);
-
-    @Update("UPDATE test " +
-            "set parent_id = #{parentId},create_time = NOW() " +
-            "WHERE id = #{id}")
-    int updateById2(Test1 record);
-
-    @Delete("DELETE FROM test " +
-            "WHERE id = #{id}")
-    int deleteById2(Integer id);
-
-    @Select("SELECT * " +
-            "FROM test " +
-            "WHERE id = #{id}")
-    Test1 selectById2(Integer id);
 
     /************************************************************分割线************************************************************/
     /* todo 强大的动态SQL */

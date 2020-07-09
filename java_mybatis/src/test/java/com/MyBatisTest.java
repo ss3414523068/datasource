@@ -1,4 +1,4 @@
-package com.util;
+package com;
 
 import com.model.User;
 import org.apache.ibatis.io.Resources;

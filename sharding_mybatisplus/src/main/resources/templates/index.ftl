@@ -8,7 +8,7 @@
 
 <table border="1">
     <tr>
-        <td><a href="/user">user</a></td>
+        <td><a href="/curd">curd</a></td>
     </tr>
 </table>
 

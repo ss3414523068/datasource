@@ -25,7 +25,7 @@ public class CodeGenerator {
         /* 全局配置 */
         GlobalConfig gc = new GlobalConfig();
         final String projectPath = System.getProperty("user.dir");
-        final String projectName = "/springboot_mybatisplus"; /* Idea多Module项目，getProperty只能获取到根目录 */
+        final String projectName = "/springboot_mybatisplus"; /* IDEA多Module项目，getProperty只能获取到根目录 */
         gc.setOutputDir(projectPath + projectName + "/src/main/java");
         gc.setAuthor("generator");
         gc.setOpen(false);

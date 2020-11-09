@@ -1,0 +1,11 @@
+# 文件夹
+/.idea/
+/out/
+/**/target/
+
+# 项目
+/mybatis/
+
+# 文件
+*.class
+*.iml

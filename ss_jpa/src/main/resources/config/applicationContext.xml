@@ -31,6 +31,11 @@
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="proxyFilters" ref="slowFilter"/>
+
+        <!--<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>-->
+        <!--<property name="url" value="jdbc:oracle:thin:@//127.0.0.1:1521/xe"/>-->
+        <!--<property name="username" value="system"/>-->
+        <!--<property name="password" value="oracle"/>-->
     </bean>
 
     <bean id="slowFilter" class="com.alibaba.druid.filter.stat.StatFilter">
@@ -64,6 +69,9 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="database" value="MYSQL"/>
                 <property name="showSql" value="true"/>
+
+                <!--<property name="database" value="ORACLE"/>-->
+                <!--<property name="databasePlatform" value="org.hibernate.dialect.Oracle12cDialect"/>-->
             </bean>
         </property>
     </bean>
@@ -74,9 +82,6 @@
     </bean>
 
     <!-- 扫描Repository -->
-    <jpa:repositories
-            base-package="*.repository"
-            entity-manager-factory-ref="entityManagerFactoryBean"
-            transaction-manager-ref="transactionManager"/>
+    <jpa:repositories base-package="*.repository" entity-manager-factory-ref="entityManagerFactoryBean" transaction-manager-ref="transactionManager"/>
 
 </beans>

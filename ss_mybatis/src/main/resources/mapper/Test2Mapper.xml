@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.mapper.Test2Mapper">
+
+    <!--
+    修改数据库字段后，需要同时修改BaseResultMap/Base_Column_List/insert/updateByIdSelective
+    -->
+    <resultMap id="BaseResultMap" type="mybatis.model.Test2">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        parent_id,
+        create_time
+    </sql>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo CURD -->
+
+    <insert id="insert" parameterType="mybatis.model.Test2">
+        INSERT INTO mybatis_test (parent_id, create_time)
+        VALUES (#{parentId}, NOW())
+    </insert>
+
+    <insert id="insertSelective" parameterType="mybatis.model.Test2">
+        INSERT INTO mybatis_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            create_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            NOW(),
+        </trim>
+    </insert>
+
+    <update id="updateByIdSelective" parameterType="mybatis.model.Test2">
+        UPDATE mybatis_test
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="createTime != null">
+                create_time = NOW(),
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE
+        FROM mybatis_test
+        WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id = #{id}
+    </select>
+
+    <!--************************************************************分割线************************************************************-->
+    <!--
+    todo 包装器类
+    ①从日志上看无论传入int还是Integer都当做Integer处理
+    ②为什么parameterType不写也能正常运行？（只要MySQL没报错就行？）
+    -->
+
+    <select id="selectByInt" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByInteger" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id = #{id}
+    </select>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo 传入参数（基本类型集合） -->
+
+    <select id="selectByArray" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 如果只传入数组，collection必须为array，item是遍历时的别名 */
+        <foreach collection="array" index="index" item="alias" open="(" separator="," close=")">
+            #{alias}
+        </foreach>
+    </select>
+
+    <select id="selectByList" parameterType="java.util.List" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 与传入数组同理，collection必须为list */
+        <foreach collection="list" index="index" item="alias" open="(" separator="," close=")">
+            #{alias}
+        </foreach>
+    </select>
+
+    <!-- fixme 遍历Map的Key/Value -->
+    <select id="selectByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        /* 直接根据key取value */
+        WHERE id in (#{id1},#{id2})
+    </select>
+
+    <select id="selectByMap2" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 遍历Map中的集合，此处collection为集合的key */
+        <foreach collection="array2" index="index" item="alias" open="(" separator="," close=")">
+            #{alias}
+        </foreach>
+    </select>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo 传入参数（对象集合） -->
+
+    <select id="selectByArrayObject" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        <foreach collection="array" index="index" item="alias" open="(" separator="," close=")">
+            #{alias.id}
+        </foreach>
+    </select>
+
+    <!-- parameterType为Test2/List都行 -->
+    <select id="selectByListObject" parameterType="java.util.List" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        <foreach collection="list" index="index" item="alias" open="(" separator="," close=")">
+            #{alias.id}
+        </foreach>
+    </select>
+
+    <select id="selectByMapObject" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        /* 获取Map中对象的属性 */
+        WHERE id in (#{id1.id},#{id2.id})
+    </select>
+
+    <select id="selectByMapObject2" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 遍历Map中的对象集合，此处collection为集合的key */
+        <foreach collection="array2" index="index" item="alias" open="(" separator="," close=")">
+            #{alias.id}
+        </foreach>
+    </select>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo 传入参数（对象中的基本类型集合） -->
+
+    <select id="selectByObjectArray" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 遍历Bean中的集合，此处collection为集合的Bean属性 */
+        <foreach collection="selectArray" index="index" item="alias" open="(" separator="," close=")">
+            #{alias}
+        </foreach>
+    </select>
+
+    <select id="selectByObjectList" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 遍历Bean中的集合，此处collection为集合的Bean属性 */
+        <foreach collection="selectList" index="index" item="alias" open="(" separator="," close=")">
+            #{alias}
+        </foreach>
+    </select>
+
+    <select id="selectByObjectMap" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        /* 获取对象中Map的值 */
+        WHERE id in (#{selectMap.id1},#{selectMap.id2})
+    </select>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo 传入参数（对象中的对象集合） -->
+
+    <select id="selectByObjectListObject" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE id in
+        /* 遍历Bean中的对象集合，此处collection为集合的Bean属性 */
+        <foreach collection="selectList" index="index" item="alias" open="(" separator="," close=")">
+            #{alias.id}
+        </foreach>
+    </select>
+
+    <select id="selectByObjectMapObject" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        /* 获取对象中Map中的对象属性 */
+        WHERE id in (#{selectMap.id1.id},#{selectMap.id2.id})
+    </select>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo varchar型时间 -->
+
+    <select id="selectByCreateTime" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE create_time BETWEEN #{beginTime} AND #{endTime}
+    </select>
+
+    <!-- 大于小于转义符 -->
+    <select id="selectByCreateTime2" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE create_time <![CDATA[ >= ]]> #{beginTime} AND create_time <![CDATA[ <= ]]> #{endTime}
+    </select>
+
+    <select id="selectByCreateTime3" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE create_time BETWEEN #{beginTime} AND #{endTime}
+    </select>
+
+    <select id="selectByCreateTime4" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE create_time BETWEEN #{beginTime} AND #{endTime}
+    </select>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo MyBatis转义符 -->
+
+    <!-- 推荐使用#{}，${}无法避免SQL注入 -->
+    <select id="selectByEscape" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE create_time LIKE '%${createTime}%'
+    </select>
+
+    <select id="selectByEscape2" parameterType="mybatis.model.Test2" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mybatis_test
+        WHERE create_time LIKE CONCAT('%',#{createTime},'%')
+    </select>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo select count返回值 -->
+
+    <!-- 只返回count(*)的值 -->
+    <select id="selectCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM mybatis_test
+    </select>
+
+    <!-- 将count(*)映射到resultMap上 -->
+    <resultMap id="BaseResultMap2" type="mybatis.model.Test2">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- SQL查询字段中包括COUNT(*)，返回值就只有第一条 -->
+    <select id="selectCount2" resultMap="BaseResultMap2">
+        SELECT *,COUNT(*) AS count
+        FROM mybatis_test
+    </select>
+
+</mapper>

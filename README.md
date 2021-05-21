@@ -3,14 +3,6 @@
 
 ************************************************************************************************************************
 
-# mybatis
-①JDK8<br>
-②MyBatis 3.4.7源码<br>
-在别的项目中引用调试MyBatis源码<br>
-（JDK8+允许ognl/javassist传递依赖）<br>
-
-******************************************************************************************
-
 # java_mybatis
 ①JDK8<br>
 ②Java直接整合MyBatis<br>
@@ -78,8 +70,3 @@ MBP二级缓存+Ehcache：@EnableCaching+@CacheConfig+@Cacheable+ehcache.xml<br>
 ①JDK8+MBP+sharding-jdbc<br>
 ②ShardingJDBC+MBP<br>
 单库水平分表<br>
-
-# springboot_h2
-①JDK8<br>
-②JVM嵌入式数据库H2<br>
-（初始化时未执行schema-h2.sql/data-h2.sql）<br>

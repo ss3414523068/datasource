@@ -4,8 +4,5 @@
 /**/.gradle/
 /**/build/
 
-# 项目
-/mybatis/
-
 # 文件
 *.iml
